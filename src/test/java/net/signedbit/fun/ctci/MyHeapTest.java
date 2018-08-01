@@ -12,7 +12,7 @@ class MyHeapTest {
             final MyHeap<Integer> heap = new MyHeap<>();
             for (int i = 0; i < 34; i++) {
                 heap.insert(i);
-                assertEquals(Integer.valueOf(0), heap.peek_min());
+                assertEquals(Integer.valueOf(0), heap.peekMinimum());
             }
         }
 
@@ -20,7 +20,7 @@ class MyHeapTest {
             final MyHeap<Integer> heap = new MyHeap<>();
             for (int i = 33; i >= 0; i--) {
                 heap.insert(i);
-                assertEquals(Integer.valueOf(i), heap.peek_min());
+                assertEquals(Integer.valueOf(i), heap.peekMinimum());
             }
         }
 
@@ -29,7 +29,7 @@ class MyHeapTest {
             for (int i = 33; i >= 0; i--) {
                 heap.insert(i);
                 heap.insert(i);
-                assertEquals(Integer.valueOf(i), heap.peek_min());
+                assertEquals(Integer.valueOf(i), heap.peekMinimum());
             }
         }
     }
@@ -40,12 +40,12 @@ class MyHeapTest {
             final MyHeap<Integer> heap = new MyHeap<>();
             for (int i = 5; i >= 0; i--) {
                 heap.insert(i);
-                assertEquals(Integer.valueOf(i), heap.peek_min());
+                assertEquals(Integer.valueOf(i), heap.peekMinimum());
             }
             for (int i = 0; i < 6; i++) {
-                final int min = heap.peek_min();
+                final int min = heap.peekMinimum();
                 assertEquals(i, min);
-                assertEquals(Integer.valueOf(min), heap.extract_min());
+                assertEquals(Integer.valueOf(min), heap.removeMinimum());
             }
         }
 
@@ -53,18 +53,18 @@ class MyHeapTest {
             final MyHeap<Integer> heap = new MyHeap<>();
             for (int i = 33; i >= 0; i--) {
                 heap.insert(i);
-                assertEquals(Integer.valueOf(i), heap.peek_min());
+                assertEquals(Integer.valueOf(i), heap.peekMinimum());
                 heap.insert(i);
-                assertEquals(Integer.valueOf(i), heap.peek_min());
+                assertEquals(Integer.valueOf(i), heap.peekMinimum());
             }
             for (int i = 0; i < 34; i++) {
-                int min = heap.peek_min();
+                int min = heap.peekMinimum();
                 assertEquals(i, min);
-                min = heap.extract_min();
+                min = heap.removeMinimum();
                 assertEquals(i, min);
-                min = heap.peek_min();
+                min = heap.peekMinimum();
                 assertEquals(i, min);
-                min = heap.extract_min();
+                min = heap.removeMinimum();
                 assertEquals(i, min);
             }
         }
@@ -77,10 +77,10 @@ class MyHeapTest {
             final MyHeap<Integer> heap = new MyHeap<>();
             for (int i = 33; i >= 0; i--) {
                 heap.insert(i);
-                assertEquals(Integer.valueOf(i), heap.peek_min());
+                assertEquals(Integer.valueOf(i), heap.peekMinimum());
             }
             for (int i = 0; i < 34; i++) {
-                final int min = heap.extract_min();
+                final int min = heap.removeMinimum();
                 assertEquals(i, min);
             }
         }
@@ -92,9 +92,9 @@ class MyHeapTest {
                 heap.insert(i);
             }
             for (int i = 0; i < 34; i++) {
-                int min = heap.extract_min();
+                int min = heap.removeMinimum();
                 assertEquals(i, min);
-                min = heap.extract_min();
+                min = heap.removeMinimum();
                 assertEquals(i, min);
             }
         }

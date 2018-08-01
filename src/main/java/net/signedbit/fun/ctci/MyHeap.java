@@ -9,47 +9,42 @@ import java.util.NoSuchElementException;
 
 public class MyHeap<T extends Comparable> {
     private final List<T> list = new ArrayList<>(Collections.singleton(null));
-    private int size;
 
     public void insert(final T value) {
         Preconditions.checkArgument(value != null);
 
         list.add(value);
-        size++;
-
         heapify();
     }
 
-    public T peek_min() {
+    public T peekMinimum() {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
+
         return list.get(1);
     }
 
-    public T extract_min() {
+    public T removeMinimum() {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
 
         final T min = list.remove(1);
-        size--;
-
         heapify();
-
         return min;
     }
 
-    public int size() {
-        return size;
+    public int getSize() {
+        return list.size() - 1;
     }
 
     public boolean isEmpty() {
-        return size() == 0;
+        return getSize() == 0;
     }
 
     private void heapify() {
-        for (int i = size(); i >= 0; i--) {
+        for (int i = getSize(); i >= 0; i--) {
             heapify(i);
         }
     }
