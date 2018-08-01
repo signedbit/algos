@@ -1,6 +1,9 @@
 package net.signedbit.fun.ctci;
 
+import com.google.common.collect.ImmutableSet;
 import org.junit.jupiter.api.Test;
+
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -86,16 +89,19 @@ class LinkedListsTest {
         assertNull(ll.intersection(null, new MyLinkedList<>()));
         assertNull(ll.intersection(new MyLinkedList<>(), null));
         assertNull(ll.intersection(null, null));
-        assertNull(ll.intersection(new MyLinkedList<>(1), new MyLinkedList<>()));
-        assertNull(ll.intersection(new MyLinkedList<>(), new MyLinkedList<>(1)));
-        assertNull(ll.intersection(new MyLinkedList<>(), new MyLinkedList<>(1, 2, 3)));
-        assertNull(ll.intersection(new MyLinkedList<>(1, 2, 3), new MyLinkedList<>(4, 5, 6)));
 
-        assertEquals(Integer.valueOf(3), ll.intersection(new MyLinkedList<>(6, 5, 4, 3), new MyLinkedList<>(1, 2, 3)));
-        assertEquals(Integer.valueOf(2), ll.intersection(new MyLinkedList<>(1, 2, 3), new MyLinkedList<>(2)));
-        assertEquals(Integer.valueOf(2), ll.intersection(new MyLinkedList<>(3, 2, 1), new MyLinkedList<>(2)));
-        assertEquals(Integer.valueOf(2), ll.intersection(new MyLinkedList<>(3, 2, 1), new MyLinkedList<>(2)));
-        assertEquals(Integer.valueOf(1), ll.intersection(new MyLinkedList<>(3, 2, 1), new MyLinkedList<>(1, 2, 3)));
+        assertEquals(Collections.emptySet(), ll.intersection(new MyLinkedList<>(1), new MyLinkedList<>()));
+        assertEquals(Collections.emptySet(), ll.intersection(new MyLinkedList<>(), new MyLinkedList<>(1)));
+        assertEquals(Collections.emptySet(), ll.intersection(new MyLinkedList<>(), new MyLinkedList<>(1, 2, 3)));
+        assertEquals(Collections.emptySet(), ll.intersection(new MyLinkedList<>(1, 2, 3), new MyLinkedList<>(4, 5, 6)));
+
+        assertEquals(Collections.singleton(3), ll.intersection(new MyLinkedList<>(6, 5, 4, 3), new MyLinkedList<>(1, 2, 3)));
+        assertEquals(Collections.singleton(2), ll.intersection(new MyLinkedList<>(1, 2, 3), new MyLinkedList<>(2)));
+        assertEquals(Collections.singleton(2), ll.intersection(new MyLinkedList<>(3, 2, 1), new MyLinkedList<>(2)));
+        assertEquals(Collections.singleton(2), ll.intersection(new MyLinkedList<>(3, 2, 1), new MyLinkedList<>(2, 4)));
+
+        assertEquals(ImmutableSet.of(2, 3), ll.intersection(new MyLinkedList<>(3, 2, 1), new MyLinkedList<>(2, 3, 4, 5)));
+        assertEquals(ImmutableSet.of(1, 2, 3), ll.intersection(new MyLinkedList<>(3, 2, 1), new MyLinkedList<>(1, 2, 3)));
     }
 
     @Test
