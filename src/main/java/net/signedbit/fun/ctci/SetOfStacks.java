@@ -2,20 +2,19 @@ package net.signedbit.fun.ctci;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class SetOfStacks<T> implements IStack<T> {
     private final int stackCapacity;
-    private final ArrayList<MyStack<T>> stacks;
+    private final List<MyStack<T>> stacks;
 
     private int totalHeight;
 
     public SetOfStacks(final int stackCapacity) {
         this.stackCapacity = stackCapacity;
-
-        this.stacks = new ArrayList<>(Collections.singleton(new MyStack<T>()));
+        this.stacks = new ArrayList<>(Collections.singleton(new MyStack<>()));
     }
-
 
     public void push(final T item) {
         MyStack<T> stack = stacks.get(stacks.size() - 1);
@@ -40,6 +39,9 @@ public class SetOfStacks<T> implements IStack<T> {
         return result;
     }
 
+    /**
+     * @param index is the index of the stack itself, not of the items.
+     */
     public T popAt(final int index) {
         if (isEmpty()) {
             throw new NoSuchElementException("stack is empty");
@@ -67,5 +69,4 @@ public class SetOfStacks<T> implements IStack<T> {
     public int getHeight() {
         return totalHeight;
     }
-
 }
