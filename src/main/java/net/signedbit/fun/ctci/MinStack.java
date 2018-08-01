@@ -10,7 +10,7 @@ public class MinStack<T extends Comparable> extends MyStack<T> {
         if (isEmpty()) {
             minimums.push(item);
         } else {
-            minimums.push(minimum(item, minimums.peek()));
+            minimums.push(minimum(item, getMinimum()));
         }
         super.push(item);
     }
