@@ -1,7 +1,10 @@
 package net.signedbit.fun.ctci;
 
+import com.google.common.collect.Iterators;
+
 import java.util.Iterator;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class MyLinkedList<T> implements Iterable<T> {
     public static class Node<T> {
@@ -213,26 +216,17 @@ public class MyLinkedList<T> implements Iterable<T> {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append('[');
-        final Iterator<T> data = iterator();
-        for (int i = Math.min(getSize(), 100); i >= 0 && data.hasNext(); i--) {
-            sb.append(data.next());
-            if (data.hasNext()) {
-                sb.append(',');
-            }
-        }
-        sb.append(']');
-        return sb.toString();
+        final StringJoiner joiner = new StringJoiner(",", "[", "]");
+        forEach(datum -> joiner.add(datum.toString()));
+        return joiner.toString();
     }
 
     @Override
     public int hashCode() {
         int hashCode = 0;
-        final Iterator<T> data = iterator();
-        for (int num = 0, end = Math.min(getSize(), 100); num < end; ) {
-            hashCode += num++;
-            hashCode += data.next().hashCode();
+        for (final T datum : this) {
+            hashCode += datum.hashCode();
+            hashCode *= 31;
         }
         return hashCode;
     }
@@ -246,13 +240,6 @@ public class MyLinkedList<T> implements Iterable<T> {
         if (getSize() != other.getSize()) {
             return false;
         }
-        for (final Iterator<T> it = iterator(), otherIt = other.iterator(); it.hasNext(); ) {
-            final T mine = it.next();
-            final T theirs = otherIt.next();
-            if (!mine.equals(theirs)) {
-                return false;
-            }
-        }
-        return true;
+        return Iterators.elementsEqual(iterator(), other.iterator());
     }
 }
