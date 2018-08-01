@@ -5,8 +5,7 @@ import java.util.NoSuchElementException;
 public class MyStack<T> implements IStack<T> {
     private final MyLinkedList<T> list = new MyLinkedList<>();
 
-    public
-    MyStack(final T... data) {
+    public MyStack(final T... data) {
         for (final T datum : data) {
             push(datum);
         }
