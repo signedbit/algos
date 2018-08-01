@@ -164,4 +164,16 @@ class MyLinkedListTest {
         assertEquals("byte", list.remove(2));
         assertEquals("bye", list.getLast());
     }
+
+    @Test
+    void toStringTest() {
+        final MyLinkedList<String> list = new MyLinkedList<>();
+        assertEquals("[]", list.toString());
+        list.append("a");
+        assertEquals("[a]", list.toString());
+        list.append("b");
+        assertEquals("[a,b]", list.toString());
+        list.prepend("c");
+        assertEquals("[c,a,b]", list.toString());
+    }
 }
