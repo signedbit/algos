@@ -118,22 +118,22 @@ public class LinkedLists {
      *
      * Note: this compares by value, not reference because my impl doesn't consider the nodes to be first class
      */
-    public <T> T intersection(final MyLinkedList<T> list1, final MyLinkedList<T> list2) {
+    public <T> Set<T> intersection(final MyLinkedList<T> list1, final MyLinkedList<T> list2) {
         if (list1 == null || list2 == null) {
             return null;
         }
+
+        final Set<T> intersection = new HashSet<>();
         if (list1.isEmpty() || list2.isEmpty()) {
-            return null;
+            return intersection;
         }
 
-        final Set<T> seen = new HashSet<>(list1.getSize());
-        list1.forEach(seen::add);
-        for (final T item : list2) {
-            if (seen.contains(item)) {
-                return item;
+        for (final T item : list1) {
+            if (list2.contains(item)) {
+                intersection.add(item);
             }
         }
-        return null;
+        return intersection;
     }
 
     public <T> T hasLoop(final MyNodeLinkedList<T> list) {
