@@ -19,5 +19,4 @@ class StacksTest {
         assertEquals(new MyStack<>(1, 1, 1, 1, 1), clz.sort(new MyStack<>(1, 1, 1, 1, 1)));
         assertEquals(new MyStack<>(100, 10, 1, -10, -100), clz.sort(new MyStack<>(-100, 100, -10, 10, 1)));
     }
-
 }

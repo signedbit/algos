@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class StacksTest {
+class MinStackTest {
     @Test
     void getMinimum() {
         final MinStack<Integer> stack = new MinStack<>();
