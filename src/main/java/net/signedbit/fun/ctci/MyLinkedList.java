@@ -107,36 +107,48 @@ public class MyLinkedList<T> implements Iterable<T> {
         }
         size--;
         if (index == 0) {
-            final Node<T> oldHead = head;
-            final Node<T> newHead = head.next;
-            oldHead.next = null;
-            if (newHead != null) {
-                newHead.prev = null;
-            }
-            head = newHead;
-            return dataOf(oldHead);
+            return removeHead();
         } else if (index == size) {
-            final Node<T> oldTail = tail;
-            final Node<T> newTail = tail.prev;
-            newTail.next = null;
-            oldTail.prev = null;
-            tail = newTail;
-            return dataOf(oldTail);
+            return removeTail();
         } else {
-            Node<T> toRemove = head;
-            for (int i = 0; i < index; i++) {
-                toRemove = toRemove.next;
-            }
-            Node prev = toRemove.prev;
-            Node next = toRemove.next;
-
-            prev.next = next;
-            next.prev = prev;
-            toRemove.prev = null;
-            toRemove.next = null;
-
-            return dataOf(toRemove);
+            return removeAt(index);
         }
+    }
+
+    private T removeHead() {
+        final Node<T> oldHead = head;
+        final Node<T> newHead = head.next;
+        oldHead.next = null;
+        if (newHead != null) {
+            newHead.prev = null;
+        }
+        head = newHead;
+        return dataOf(oldHead);
+    }
+
+    private T removeTail() {
+        final Node<T> oldTail = tail;
+        final Node<T> newTail = tail.prev;
+        newTail.next = null;
+        oldTail.prev = null;
+        tail = newTail;
+        return dataOf(oldTail);
+    }
+
+    private T removeAt(final int index) {
+        Node<T> toRemove = head;
+        for (int i = 0; i < index; i++) {
+            toRemove = toRemove.next;
+        }
+        Node prev = toRemove.prev;
+        Node next = toRemove.next;
+
+        prev.next = next;
+        next.prev = prev;
+        toRemove.prev = null;
+        toRemove.next = null;
+
+        return dataOf(toRemove);
     }
 
     public T remove(final T datum) {
