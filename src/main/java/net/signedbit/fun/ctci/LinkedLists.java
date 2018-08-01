@@ -71,8 +71,8 @@ public class LinkedLists {
         if (list1 == null || list2 == null) {
             return null;
         }
-        final int n1 = list1.covertToIntReverse();
-        final int n2 = list2.covertToIntReverse();
+        final int n1 = list1.convertToIntReverse();
+        final int n2 = list2.convertToIntReverse();
         final MyIntLinkedList result = new MyIntLinkedList();
         int sum = n1 + n2;
         while (sum > 0) {
@@ -90,8 +90,8 @@ public class LinkedLists {
         if (list1 == null || list2 == null) {
             return null;
         }
-        final int n1 = list1.covertToIntForward();
-        final int n2 = list2.covertToIntForward();
+        final int n1 = list1.convertToIntForward();
+        final int n2 = list2.convertToIntForward();
         final MyIntLinkedList result = new MyIntLinkedList();
         int sum = n1 + n2;
         while (sum > 0) {

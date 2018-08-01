@@ -36,7 +36,7 @@ public class MyIntLinkedList extends MyLinkedList<Integer> {
         return left;
     }
 
-    public int covertToIntReverse() {
+    public int convertToIntReverse() {
         int result = 0;
         int power = 1;
         for (final int i : this) {
@@ -46,7 +46,7 @@ public class MyIntLinkedList extends MyLinkedList<Integer> {
         return result;
     }
 
-    public int covertToIntForward() {
+    public int convertToIntForward() {
         int result = 0;
         int power = 1;
         Node<Integer> n = tail;
