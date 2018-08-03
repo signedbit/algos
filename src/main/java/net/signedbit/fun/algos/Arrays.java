@@ -61,10 +61,7 @@ public class Arrays {
         final char[] url = new char[finalLength];
 
         // copy
-        final char[] chars = s.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            url[i] = chars[i];
-        }
+        s.getChars(0, s.length(), url, 0);
 
         for (int i = 0; i < url.length; i++) {
             final char c = url[i];
