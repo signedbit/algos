@@ -9,7 +9,7 @@ class BinaryTreeTest {
     void getValue() {
         assertEquals("foo", t("foo").getValue());
         assertEquals("bar", t("bar").getValue());
-        assertEquals(null, t(null).getValue());
+        assertNull(t(null).getValue());
     }
 
     @Test
