@@ -75,13 +75,13 @@ class LinkedListsTest {
         assertFalse(ll.isPalindrome(new MyLinkedList<>(1, 2, 3, 4, 1)));
 
         assertTrue(ll.isPalindrome(new MyLinkedList<>()));
-        assertTrue(ll.isPalindrome(new MyLinkedList<Integer>(1)));
-        assertTrue(ll.isPalindrome(new MyLinkedList<Integer>(1, 1)));
-        assertTrue(ll.isPalindrome(new MyLinkedList<Integer>(1, 2, 1)));
-        assertTrue(ll.isPalindrome(new MyLinkedList<Integer>(1, 2, 2, 1)));
-        assertTrue(ll.isPalindrome(new MyLinkedList<Integer>(1, 2, 3, 2, 1)));
-        assertTrue(ll.isPalindrome(new MyLinkedList<Integer>(1, 1, 1, 1)));
-        assertTrue(ll.isPalindrome(new MyLinkedList<Integer>(1, 1, 1, 1, 1)));
+        assertTrue(ll.isPalindrome(new MyLinkedList<>(1)));
+        assertTrue(ll.isPalindrome(new MyLinkedList<>(1, 1)));
+        assertTrue(ll.isPalindrome(new MyLinkedList<>(1, 2, 1)));
+        assertTrue(ll.isPalindrome(new MyLinkedList<>(1, 2, 2, 1)));
+        assertTrue(ll.isPalindrome(new MyLinkedList<>(1, 2, 3, 2, 1)));
+        assertTrue(ll.isPalindrome(new MyLinkedList<>(1, 1, 1, 1)));
+        assertTrue(ll.isPalindrome(new MyLinkedList<>(1, 1, 1, 1, 1)));
     }
 
     @Test
