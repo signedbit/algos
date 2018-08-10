@@ -54,38 +54,24 @@ public class Arrays {
     }
 
     /**
-     * Time: O(n + n*n) = O(n^2)
+     * Time: O(n)
      * Space: O(n)
      */
     public String urlify(final String s, final int finalLength) {
         final char[] url = new char[finalLength];
 
-        // copy
-        s.getChars(0, s.length(), url, 0);
-
-        for (int i = 0; i < url.length; i++) {
-            final char c = url[i];
+        for (int srcIdx = 0, dstIdx = 0; srcIdx < s.length(); srcIdx++, dstIdx++) {
+            final char c = s.charAt(srcIdx);
             if (c != ' ') {
+                url[dstIdx] = c;
                 continue;
             }
 
-            shift(url, i, 2);
-            url[i++] = '%';
-            url[i++] = '2';
-            url[i] = '0';
+            url[dstIdx++] = '%';
+            url[dstIdx++] = '2';
+            url[dstIdx] = '0';
         }
         return new String(url);
-    }
-
-
-    /**
-     * Time: O(n)
-     * Space: O(1)
-     */
-    private void shift(final char[] chars, final int start, final int length) {
-        for (int i = chars.length - length; i > start; i--) {
-            chars[i + 1] = chars[(i - length) + 1];
-        }
     }
 
     /**
