@@ -75,21 +75,22 @@ public class Arrays {
     }
 
     /**
-     * Time: O(3n) = O(n)
+     * Time: O(2n) = O(n)
      * Space: O(n)
      */
     public boolean isPalindromePermutation(final String s) {
         if (s == null) {
             return false;
         }
+
         final Map<Character, Integer> counts = countChars(s.toLowerCase());
         counts.remove(' ');
-        int odds = 0;
-        for (final int count : counts.values()) {
-            if (count % 2 != 0) {
-                odds++;
-            }
-        }
+
+        final long odds = counts.values().stream().
+                filter(count -> count % 2 == 1).
+                limit(2).
+                count();
+
         return odds <= 1;
     }
 
