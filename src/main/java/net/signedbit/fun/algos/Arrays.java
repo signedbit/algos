@@ -8,7 +8,7 @@ import java.util.Set;
 public class Arrays {
     /**
      * Time: O(n)
-     * Space: O(n/2) = O(n)
+     * Space: O(n-1) = O(n)
      */
     public boolean isUnique(final String s) {
         if (s == null) {
