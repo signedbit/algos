@@ -39,7 +39,6 @@ public class SortedSearch {
         // scan left for first instance of "key"
         for (int count = insertionPoint - 1; count >= 0; count--) {
             if (key != sortedArray[count]) {
-                // key should be where num is located
                 return count + 1;
             }
         }
